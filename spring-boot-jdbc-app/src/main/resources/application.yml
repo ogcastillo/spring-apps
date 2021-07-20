@@ -1,0 +1,18 @@
+spring:
+    application:
+      name: spring-jdbc-demo
+server:
+    port: 5000
+
+datasource:
+    url: jdbc:h2:mem:test
+    driver-class-name: org.h2.Driver
+    username: admin
+    password: p4ssw0rd
+    h2:
+      console:
+        settings:
+          web-allow-others: true
+      enabled: true
+      path: /h2-console
+
