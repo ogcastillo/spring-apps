@@ -1,8 +1,15 @@
 spring:
     application:
-      name: spring-jdbc-demo
+      name: spring-jdbc-app
 server:
     port: 5000
+
+logging:
+  file:
+    name: logs/spring-boot-jdb-capp.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
 
 datasource:
     url: jdbc:h2:mem:test
