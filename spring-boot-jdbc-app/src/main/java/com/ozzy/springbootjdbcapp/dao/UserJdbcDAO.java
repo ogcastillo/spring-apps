@@ -39,8 +39,9 @@ public class UserJdbcDAO implements DAO<User> {
     }
 
     @Override
-    public User create(User user) {
-     return null;
+    public int create(User user) {
+        String sql = "INSERT INTO users (username, password) values (?,?)";
+        return jdbcTemplate.update(sql,user.getUsername(), user.getPassword());
     }
 
     @Override
@@ -49,12 +50,12 @@ public class UserJdbcDAO implements DAO<User> {
     }
 
     @Override
-    public boolean update(User user, String[] params) {
+    public int update(User user, String[] params) {
         return false;
     }
 
     @Override
-    public boolean delete(User user) {
+    public int delete(User user) {
         return false;
     }
 }

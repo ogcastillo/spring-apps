@@ -7,11 +7,11 @@ public interface DAO<T> {
 
     List<T> list();
 
-    T create (T t);
+    int create (T t);
 
     Optional<T> get(int id);
 
-    boolean update(T t, String[] params);
+    int update(T t, String[] params);
 
-    boolean delete(T t);
+    int delete(T t);
 }

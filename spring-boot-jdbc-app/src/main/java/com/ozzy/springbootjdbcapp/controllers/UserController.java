@@ -12,21 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/user")
+@AllArgsConstructor(onConstructor_ = @Autowired)
 public class UserController {
     private final UserService userService;
 
-    @Autowired
-    public UserController(UserService userService){
-        this.userService = userService;
-    }
+//    @Autowired
+//    public UserController(UserService userService){
+//        this.userService = userService;
+//    }
 
-    @PostMapping(value= "/save", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public UserDto saveUser(@RequestBody UserDto newUser, HttpServletRequest req){
-
-        return userService.saveUser(newUser);
-
+    @PostMapping(value= "/save", consumes = APPLICATION_JSON_VALUE)
+    public void saveUser(@RequestBody UserDto newUser, HttpServletRequest req, HttpServletResponse response){
+        int rowIns = userService.saveUser(newUser);
+        if (rowIns > 0){
+            response.setStatus(201);
+        }
     }
 
     @GetMapping(value = "/all", produces = APPLICATION_JSON_VALUE)

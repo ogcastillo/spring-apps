@@ -15,7 +15,7 @@ public class LoggingAspect {
 
     private final Logger logger = LogManager.getLogger();
 
-    @Pointcut("within(com.ozzy.sprinbootjdbcapp..*)")
+    @Pointcut("within(com.ozzy.springbootjdbcapp..*)")
     public void logAll(){};
 
     @Before("logAll()")
