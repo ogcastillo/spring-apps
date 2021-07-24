@@ -33,14 +33,7 @@ public class UserController {
 
     @GetMapping(value = "/get",produces = APPLICATION_JSON_VALUE)
     public UserDto getUser(@RequestParam int user_Id, HttpServletRequest req, HttpServletResponse res){
-        UserDto userDto = userService.get(user_Id);
-        if(!(userDto == null)){
-            res.setStatus(200);
-            return  userDto;
-        }else{
-            res.setStatus(404);
-            return null;
-        }
+        return userService.get(user_Id);
     }
 
     @PostMapping(value = "/save", consumes = APPLICATION_JSON_VALUE)

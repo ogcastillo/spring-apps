@@ -1,5 +1,6 @@
 package com.ozzy.springjdbctrainning.repositories;
 
+import com.ozzy.springjdbctrainning.exceptions.DataNotFoundException;
 import com.ozzy.springjdbctrainning.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -46,7 +47,7 @@ RowMapper<User> rowMapper = (rs,rowNum) ->{
         try{
             user = jdbcTemplate.queryForObject(sql,rowMapper, id);
         }catch (DataAccessException e){
-            System.out.println("User not found");
+            throw new DataNotFoundException("User Not Found!!!");
         }
         return Optional.ofNullable(user);
     }
